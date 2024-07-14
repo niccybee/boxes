@@ -1,6 +1,7 @@
 <template>
-    <div>
-        New page
+    <div class="">
+        <p>New Page</p>
+       <Button>New Page Button</Button>
     </div>
   </template>
   
