@@ -12,17 +12,17 @@
                     Item
                 </TabsTrigger>
             </TabsList>
-            <div class="bg-slate-200 w-full h-full">
-                <TabsContent value="room">
+
+            <TabsContent value="room" class="bg-yellow-200 w-full h-full">
                 <AppRoom></AppRoom>
             </TabsContent>
-            <TabsContent value="box">
+            <TabsContent value="box" class="bg-yellow-200 w-full h-full">
                 <AppBox></AppBox>
             </TabsContent>
-            <TabsContent value="item">
-                <AppBox></AppBox>
+            <TabsContent value="item" class="bg-yellow-200 w-full h-full">
+                <AppItem></AppItem>
             </TabsContent>
-            </div>
+
         </Tabs>
     </div>
 </template>
