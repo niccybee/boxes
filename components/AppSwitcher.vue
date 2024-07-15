@@ -13,13 +13,13 @@
                 </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="room" class="bg-yellow-200 w-full h-full">
+            <TabsContent value="room" class="w-full h-full">
                 <AppRoom></AppRoom>
             </TabsContent>
-            <TabsContent value="box" class="bg-yellow-200 w-full h-full">
+            <TabsContent value="box" class="w-full h-full">
                 <AppBox></AppBox>
             </TabsContent>
-            <TabsContent value="item" class="bg-yellow-200 w-full h-full">
+            <TabsContent value="item" class="w-full h-full">
                 <AppItem></AppItem>
             </TabsContent>
 
