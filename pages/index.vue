@@ -2,10 +2,10 @@
     <div class="p-4 h-screen bg-blue-200">
         <!-- <AppSwitcher></AppSwitcher> -->
         <div class="h-full  grid grid-cols-2 grid-rows-2 p-8 gap-8"> 
-            <Card>
+            <NuxtLink to="/houses">
+                <Card>
                 <CardHeader>
                     <h2>Houses</h2>
-                    
                 </CardHeader>
                 <CardContent>
                     v-for house in houses
@@ -15,6 +15,7 @@
                     <Button variant="secondary">Boom</Button>
                 </CardFooter>
             </Card>
+            </NuxtLink>
             <Card>
                 <CardHeader>Boxes</CardHeader>
                 <CardContent>

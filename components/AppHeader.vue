@@ -1,8 +1,11 @@
+<script setup lang="ts">
+const route = useRoute()
+</script>
 <template>
     <div class="flex items-center justify-between">
         <div>
         <nav>
-            Box App
+            Box App - {{ route }}
         </nav>
         <Breadcrumb>
             <BreadcrumbList>
