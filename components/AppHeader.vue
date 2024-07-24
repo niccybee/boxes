@@ -1,34 +1,31 @@
 <script setup lang="ts">
-const route = useRoute()
+const router = useRouter()
+
+const  currentRoute  = JSON.stringify(router.currentRoute, null, '\t')
+
+const test = [1,2,3]
 </script>
 <template>
     <div class="flex items-center justify-between">
         <div>
-        <nav>
-            Box App - {{ route }}
-        </nav>
-        <Breadcrumb>
-            <BreadcrumbList>
-                <BreadcrumbItem>
-                    <BreadcrumbLink href="/">
-                        Home
-                    </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                    <BreadcrumbLink href="/components">
-                        Components
-                    </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                    <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-                </BreadcrumbItem>
-            </BreadcrumbList>
-        </Breadcrumb>
-    </div>
-    <div>
-        Other Side
-    </div>
+            <nav>
+                Box App - {{ currentRoute }}
+            </nav>
+            <Breadcrumb>
+                <BreadcrumbList>
+                    <template v-for="c in test">
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href="/">
+                                hello
+                            </BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator />
+                    </template>
+                </BreadcrumbList>
+            </Breadcrumb>
+        </div>
+        <div>
+            Other Side
+        </div>
     </div>
 </template>
