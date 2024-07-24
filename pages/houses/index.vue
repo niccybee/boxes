@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  name: 'Home', 
+  template: 'app'
+})
 import PocketBase from 'pocketbase';
 
 const pb = new PocketBase('https://pocketbase-production-a082.up.railway.app');
