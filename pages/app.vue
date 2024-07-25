@@ -6,7 +6,7 @@ definePageMeta({
 </script>
 
 <template>
-    <div class="p-4 h-screen bg-blue-200">
+    <div class="p-4 h-screen ">
         <!-- <AppSwitcher></AppSwitcher> -->
         <div class="h-full  grid grid-cols-2 grid-rows-2 p-8 gap-8">
             <NuxtLink to="/houses">
