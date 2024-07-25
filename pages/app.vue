@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
     name: 'App',
-    template: 'app'
+    layout: 'app'
 })
 </script>
 

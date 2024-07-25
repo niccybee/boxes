@@ -2,7 +2,7 @@
 import { useRoute } from 'nuxt/dist/app/composables/router';
 definePageMeta({
   name: 'House',
-  template: 'app'
+  layout: 'app'
 })
 
 const route = useRoute()
