@@ -9,7 +9,10 @@ const test = [1,2,3]
     <div class="flex items-center justify-between">
         <div>
             <nav>
-                Box App - {{ currentRoute }}
+                <span>Box App </span>
+                <nuxt-link to="/app">App</nuxt-link>
+                <nuxt-link to="/auth">Auth</nuxt-link>
+                <nuxt-link to="/items">Items</nuxt-link>
             </nav>
             <Breadcrumb>
                 <BreadcrumbList>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-  <Command>
+  <div class="bg-slate-100 w-full p-4">
+    <Command>
     <CommandInput placeholder="Type a command or search..." />
     <CommandList>
       <CommandEmpty>No results found.</CommandEmpty>
@@ -32,4 +32,5 @@
       </CommandGroup>
     </CommandList>
   </Command>
+  </div>
 </template>
