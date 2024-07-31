@@ -16,6 +16,7 @@ const loading = ref(false)
 const createUser = async () => {
     loading.value = true;
     const authData = await pb.collection('users').authWithPassword(email.value, password.value);
+    console.log(authData)
 
 }
 
@@ -47,7 +48,7 @@ pb.authStore.clear();
                         Log In
                     </TabsTrigger>
                 </TabsList>
-                <TabsContent value="signup">
+                <TabsContent value="signup" class="flex items-center justify-center">
                     <Card class="w-full max-w-sm">
                         <CardHeader>
                             <CardTitle class="text-2xl">
@@ -76,7 +77,7 @@ pb.authStore.clear();
                         </CardFooter>
                     </Card>
                 </TabsContent>
-                <TabsContent value="login">
+                <TabsContent value="login" class="flex items-center justify-center">
                     <Card class="w-full max-w-sm">
                         <CardHeader>
                             <CardTitle class="text-2xl">

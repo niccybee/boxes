@@ -8,6 +8,7 @@ definePageMeta({
 <template>
     <div class="p-4 h-screen ">
         <!-- <AppSwitcher></AppSwitcher> -->
+        <AppSearcher></AppSearcher>
         <div class="h-full  grid grid-cols-2 grid-rows-2 p-8 gap-8">
             <NuxtLink to="/houses">
                 <Card>
