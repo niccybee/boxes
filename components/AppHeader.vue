@@ -18,7 +18,7 @@ const test = [1,2,3]
                 <BreadcrumbList>
                     <template v-for="c in test">
                         <BreadcrumbItem>
-                            <BreadcrumbLink href="/">
+                            <BreadcrumbLink href="/app">
                                 hello
                             </BreadcrumbLink>
                         </BreadcrumbItem>

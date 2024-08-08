@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import { useRoute } from 'nuxt/dist/app/composables/router';
 definePageMeta({
   name: 'House',
   layout: 'app'
 })
 
-const route = useRoute()
+const router = useRouter()
+const paramId = router.params
+
+const getSingleHouse = async (params: type) => {
+  const id = router.params;
+
+}
+
+
 
 </script>
 <template>
-
-  <div>testing id {{ route }}</div>
+  <div>testing router {{ router }}</div>
+  <hr>
+  <div>testing id {{ paramId }}</div>
 </template>
