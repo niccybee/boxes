@@ -22,13 +22,13 @@ onMounted(() => {
 
 <template>
   <div class="relative grid">
-    <div class="bg-slate-100 w-full absolute ">
+    <div class="absolute w-full bg-slate-100 ">
       <Command>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup>
-            <CommandItem v-for="item in items"></CommandItem>
+            <CommandItem v-for="item in items">{{ item }}</CommandItem>
           </CommandGroup>
           <CommandGroup heading="Suggestions">
             <CommandItem value="calendar">

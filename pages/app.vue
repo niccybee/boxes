@@ -7,6 +7,7 @@ definePageMeta({
 
 <template>
     <main class="min-h-[85svh] flex flex-col justify-around">
+        
         <section class="flex items-center justify-center">
             <BoxSvg t="6xl"/>
         </section>
