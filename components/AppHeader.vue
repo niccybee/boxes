@@ -1,12 +1,11 @@
 <script setup lang="ts">
 
-const router = useRouter();
 const route = useRoute()
 const fullPath = route.fullPath;
 
-console.log('router:', router)
-console.log('route:', route)
-console.log('full path:', fullPath)
+// console.log('router:', router)
+// console.log('route:', route)
+// console.log('full path:', fullPath)
 
 const crumbs = computed(()=>{
     const params = fullPath.substring(1).split('/')
@@ -24,8 +23,8 @@ const crumbs = computed(()=>{
     <div class="flex items-center justify-between">
         <div>
             <nav>
-                <span>Box App </span>
-                <!-- <p>{{router}}</p> -->
+                <!-- TODO: if user logged in go to app if not go home -->
+                <nuxt-link to="/app"><BoxSvg/></nuxt-link>
             </nav>
             <Breadcrumb>
                 <BreadcrumbList>
@@ -35,7 +34,7 @@ const crumbs = computed(()=>{
                                 {{crumb}}
                             </BreadcrumbLink>
                         </BreadcrumbItem>
-                        <BreadcrumbSeparator v-if="index !== crumbs.length - 1" />
+                        <BreadcrumbSeparator v-if="index !== crumbs.length - 1"  />
                     </template>
                 </BreadcrumbList>
             </Breadcrumb>

@@ -28,9 +28,9 @@ getSingleHouse();
 <template>
   <div>
     <div v-if="data">
-      <h2 class="font-bold text-2xl" >{{data.name}}</h2>
+      <h2 class="text-2xl font-bold" >{{data.name}}</h2>
       <Card class="container grid grid-cols-3 grid-rows-3">
-        <div v-for="box in data.box" class="bg-slate-100 p-2 rounded-md">
+        <div v-for="box in data.box" :key="box.id" class="p-2 rounded-md bg-slate-100">
           <p>{{box}}</p>
         </div>
       </Card>
