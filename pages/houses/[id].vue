@@ -17,7 +17,6 @@ const getSingleHouse = async () => {
   const record = await pb.collection('House').getOne(id, {
     expand: 'relField1,relField2.subRelField',
   });
-  console.log(record);
   data.value = await record;
   return record;
 }
