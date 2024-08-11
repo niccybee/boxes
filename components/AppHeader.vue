@@ -1,28 +1,41 @@
 <script setup lang="ts">
-const router = useRouter()
 
-const  currentRoute  = JSON.stringify(router.currentRoute, null, '\t')
+const router = useRouter();
+const route = useRoute()
+const fullPath = route.fullPath;
 
-const test = [1,2,3]
+console.log('router:', router)
+console.log('route:', route)
+console.log('full path:', fullPath)
+
+const crumbs = computed(()=>{
+    const params = fullPath.substring(1).split('/')
+    const crumbs = []
+
+    params.forEach((param) => {
+        crumbs.push(param);
+    })
+
+    return crumbs
+})
+// TODO add title case to the crumb
 </script>
 <template>
     <div class="flex items-center justify-between">
         <div>
             <nav>
                 <span>Box App </span>
-                <nuxt-link to="/app">App</nuxt-link>
-                <nuxt-link to="/auth">Auth</nuxt-link>
-                <nuxt-link to="/items">Items</nuxt-link>
+                <!-- <p>{{router}}</p> -->
             </nav>
             <Breadcrumb>
                 <BreadcrumbList>
-                    <template v-for="c in test">
+                    <template v-for="(crumb,index) in crumbs">
                         <BreadcrumbItem>
-                            <BreadcrumbLink href="/app">
-                                hello
+                            <BreadcrumbLink :href="'/'+crumb">
+                                {{crumb}}
                             </BreadcrumbLink>
                         </BreadcrumbItem>
-                        <BreadcrumbSeparator />
+                        <BreadcrumbSeparator v-if="index !== crumbs.length - 1" />
                     </template>
                 </BreadcrumbList>
             </Breadcrumb>
