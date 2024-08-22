@@ -8,21 +8,43 @@ definePageMeta({
 
 const pb = new PocketBase('https://pocketbase-production-a082.up.railway.app');
 
+// Both
 const email = ref('');
 const password = ref('')
-const login = ref(false)
 const loading = ref(false)
+
+// Sign-up only
+const name = ref('')
+
+// Other
+const data = ref({})
 
 const createUser = async () => {
     loading.value = true;
-    const authData = await pb.collection('users').authWithPassword(email.value, password.value);
-    console.log(authData)
+    const data = {
+        // "username": "test_username",
+        "email": email.value,
+        "emailVisibility": true,
+        "password": password.value,
+        "passwordConfirm": password.value,
+        "name": "test"
+    };
+
+    const record = await pb.collection('users').create(data);
+
+    data.value = await record.data.token;
+
+    // (optional) send an email verification request
+    await pb.collection('users').requestVerification(email.value);
 
 }
 
-const loginUser = async () => {
+async function loginUser() {
     loading.value = true;
-    setTimeout(()=>loading.value = false, 2000)
+    const authData = await pb.collection('users').authWithPassword(email.value, password.value);
+    console.log(authData)
+    setTimeout(() => loading.value = false, 2000)
+    data.value = await authData;
 }
 
 // after the above you can also access the auth data from the authStore
@@ -31,14 +53,15 @@ const loginUser = async () => {
 // console.log(pb.authStore.model.id);
 
 // "logout" the last authenticated model
-pb.authStore.clear();
+// pb.authStore.clear();
 </script>
 
 <template>
-    <main class="w-full h-full flex items-center justify-center p-8">
-        <div class=" p-8">
-            email: {{ email }} <br/>
-            pass: {{ password }}
+    <main class="flex items-center justify-center w-full h-full p-8">
+        <div class="p-8 ">
+            <!-- email: {{ email }} <br/>
+            pass: {{ password }} -->
+            <Card class="max-w-96">data: {{ data }}</Card>
             <Tabs default-value="signup" class="w-[400px]">
                 <TabsList class="grid w-full grid-cols-2">
                     <TabsTrigger value="signup">
@@ -60,14 +83,22 @@ pb.authStore.clear();
                         </CardHeader>
                         <CardContent class="grid gap-4">
                             <div class="grid gap-2">
-                                <Label for="email">Email</Label>
-                                <!-- <Input class="border-1 border-solid" id="email" type="email" placeholder="m@example.com" :value="email" required /> -->
-                                <input class="border-1 border-solid" type="email" v-model="email" placeholder="Enter email..."/>
+                                <label for="email">Email</label>
+                                <!-- <Input class="border-solid border-1" id="email" type="email" placeholder="m@example.com" :value="email" required /> -->
+                                <input class="border-solid border-1 border-slate-100" type="email" v-model="email"
+                                    placeholder="Enter email..." />
                             </div>
                             <div class="grid gap-2">
-                                <Label for="password">Password</Label>
-                                <!-- <Input class="border-1 border-solid" id="password" type="password" placeholder="Enter password..." required /> -->
-                                <input class="border-1 border-solid" type="password" v-model="password" placeholder="Enter password..."/>
+                                <label for="name">Name</label>
+                                <!-- <Input class="border-solid border-1" id="email" type="email" placeholder="m@example.com" :value="email" required /> -->
+                                <input class="border-solid border-1 border-slate-100" type="text" v-model="name"
+                                    placeholder="Enter name..." />
+                            </div>
+                            <div class="grid gap-2">
+                                <label for="password">Password</label>
+                                <!-- <Input class="border-solid border-1" id="password" type="password" placeholder="Enter password..." required /> -->
+                                <input class="border-solid border-1 border-slate-100" type="password" v-model="password"
+                                    placeholder="Enter password..." />
                             </div>
                         </CardContent>
                         <CardFooter>
@@ -89,14 +120,16 @@ pb.authStore.clear();
                         </CardHeader>
                         <CardContent class="grid gap-4">
                             <div class="grid gap-2">
-                                <Label for="email">Email</Label>
-                                <!-- <Input class="border-1 border-solid" id="email" type="email" placeholder="m@example.com" required /> -->
-                                <input class="border-1 border-solid" type="email" v-model="email" placeholder="Enter email..."/>
+                                <label for="email">Email</label>
+                                <!-- <Input class="border-solid border-1" id="email" type="email" placeholder="m@example.com" required /> -->
+                                <input class="border-solid border-1" type="email" v-model="email"
+                                    placeholder="Enter email..." />
                             </div>
                             <div class="grid gap-2">
-                                <Label for="password">Password</Label>
-                                <!-- <Input class="border-1 border-solid" id="password" type="password" placeholder="Enter password..." required /> -->
-                                <input class="border-1 border-solid" type="password" v-model="password" placeholder="Enter password..."/>
+                                <label for="password">Password</label>
+                                <!-- <Input class="border-solid border-1" id="password" type="password" placeholder="Enter password..." required /> -->
+                                <input class="border-solid border-1" type="password" v-model="password"
+                                    placeholder="Enter password..." />
                             </div>
                         </CardContent>
                         <CardFooter>
